@@ -3,7 +3,8 @@ import { paths as nav } from './routes'
 export const getPermissions = (role, context, method) => {
     if (!(role && context && method))
         return undefined;
-    return permissions[role][context][method];
+    context = permissions[role][context];
+    return (context !== undefined) ? context[method] : undefined;
 }
 
 export const userRoles = ['admin', 'manager', 'print_person', 'resp_professor', 'grader', 'supervisor', 'student']
@@ -18,6 +19,9 @@ const permissions = {
         'agreement': {
             'create': ['studentAddress', 'studentEmail', 'studentAddress', 'studentName', 'studentPhone', 'thesisCompletionEta', 'thesisWorkStudentTime', 'thesisWorkIntermediateGoal', 'thesisWorkMeetingAgreement', 'thesisWorkOther'],
             'edit': ['thesisCompletionEta', 'thesisWorkStudentTime', 'thesisWorkIntermediateGoal', 'thesisWorkMeetingAgreement', 'thesisSupervisorPrimary', 'thesisSupervisorSecond', 'thesisSupervisorOther', 'thesisWorkSupervisorTime', 'thesisWorkMeetingAgreement', 'thesisWorkOther']
+        },
+        'thesis': {
+            edit: ['thesisGradingInfo']
         }
     },
     'manager': {
@@ -46,6 +50,9 @@ const permissions = {
             show: [
                 nav['home'], nav['agreement'], nav['theses'], nav['supervisorManagement'], nav['assesment']
             ]
+        },
+        'thesis': {
+            edit: ['thesisGradingInfo']
         }
     },
     'grader': {

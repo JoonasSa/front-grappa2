@@ -14,7 +14,7 @@ export const saveStudyfield = (studyfield) => {
 }
 
 export const updateStudyfield = (studyfield) => {
-    const route = '/studyfields';
+    const route = '/studyfields/' + studyfield.studyfieldId;
     const prefix = "STUDYFIELD_UPDATE_ONE_";
     const method = "put";
     return callController(route, prefix, studyfield, method);

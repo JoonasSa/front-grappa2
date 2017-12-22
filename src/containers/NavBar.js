@@ -20,11 +20,12 @@ export class NavBar extends Component {
         }
     }
 
+    //BUG: DOESN'T ALWAYS FETCH REDUX STATE
     componentDidMount() {
         //This login will allow shibboleth to check on page reload
         this.props.login();
         this.props.getPersons();
-        this.refreshLinks(this.props)
+        this.refreshLinks(this.props);
     }
 
     componentWillReceiveProps(newProps) {
@@ -35,7 +36,7 @@ export class NavBar extends Component {
             this.props.getAgreements();
             this.props.getCouncilmeetings();
             this.props.getTheses();
-            this.setState({ loaded: true })
+            this.setState({ loaded: true });
         }
     }
 

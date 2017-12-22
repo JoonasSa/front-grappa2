@@ -15,7 +15,7 @@ export class SupervisorManagementPage extends Component {
     }
 
     componentDidMount() {
-        this.props.getAgreementPersons();
+        this.props.getAgreementPersons(); //not a function -> undefined?
         document.title = "Supervisor Management";
     }
 

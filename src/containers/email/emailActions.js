@@ -39,6 +39,7 @@ const action = (suffix, response) => {
     }
 }
 
+//only place where this is called like this => refactor?
 const callController = (prefix, method, data, route = "/emaildrafts") => (dispatch) => {
     dispatch(action(prefix + "ATTEMPT"));
     callApi(route, method, data)
